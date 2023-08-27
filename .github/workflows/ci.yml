@@ -37,15 +37,3 @@ jobs:
       - name: Get branch name
         id: branch-name
         uses: tj-actions/branch-names@v7
-
-      - name: Upload artifact
-        uses: wangyucode/sftp-upload-action@v1.4.8
-        with:
-          host: ${{ secrets.NICKCHAN_FTP_HOST }}
-          port: ${{ secrets.NICKCHAN_FTP_PORT }}
-          username: palera1n
-          password: ${{ secrets.NICKCHAN_FTP_PASS }}
-          forceUpload: true
-          dryRun: false
-          localDir: 'upload'
-          remoteDir: "/palera1n/artifacts/kpf/${{ steps.branch-name.outputs.ref_branch || github.ref }}"
